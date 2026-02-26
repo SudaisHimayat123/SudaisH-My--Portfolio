@@ -79,7 +79,7 @@ export default function Contact() {
 
             {/* Contact items */}
             {[
-              { icon: 'fa-envelope', label: 'Email', value: 'hashirsudaiskhan@gmail.com', href: 'mailto:hashirsudaiskhan@gmail.com' },
+              {"icon": 'fa-envelope', label: 'Email', value: 'hashirsudaiskhan@gmail.com', href: 'mailto:hashirsudaiskhan@gmail.com' },
               { icon: 'fa-phone', label: 'Phone', value: '+92-347-5758132', href: 'tel:+923475758132' },
               { icon: 'fa-map-marker-alt', label: 'Location', value: 'Islamabad, Pakistan', href: undefined },
             ].map((item) => {
@@ -87,7 +87,6 @@ export default function Contact() {
               return (
                 <Tag
                   key={item.label}
-                  // @ts-expect-error polymorphic
                   href={item.href}
                   className="flex items-center gap-4 p-4 rounded-xl border border-[var(--card-border)] bg-[var(--card)] mb-3 no-underline text-[var(--text)] transition-all duration-300 hover:border-[var(--accent)] hover:bg-[var(--accent-glow)] hover:text-[var(--accent)] group"
                   style={item.href ? { cursor: 'pointer' } : { cursor: 'default' }}
