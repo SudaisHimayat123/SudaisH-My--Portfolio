@@ -1,0 +1,187 @@
+/* ===== GOOGLE FONTS FALLBACK ===== */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CSS VARIABLES (Dark Theme Default) ===== */
+:root {
+  --bg: #090b10;
+  --bg-2: #0d1117;
+  --bg-3: #131920;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text: #e8edf5;
+  --text-muted: #7a8799;
+  --text-dim: #3d4a5c;
+  --accent: #00d4aa;
+  --accent-2: #0099ff;
+  --accent-glow: rgba(0, 212, 170, 0.15);
+  --accent-2-glow: rgba(0, 153, 255, 0.15);
+  --gradient: linear-gradient(135deg, #00d4aa 0%, #0099ff 100%);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"],
+.light {
+  --bg: #f5f7fa;
+  --bg-2: #ffffff;
+  --bg-3: #edf0f5;
+  --card: rgba(0, 0, 0, 0.03);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --text: #0d1117;
+  --text-muted: #5a6572;
+  --text-dim: #aab4be;
+  --accent-glow: rgba(0, 212, 170, 0.1);
+  --accent-2-glow: rgba(0, 153, 255, 0.1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BASE STYLES ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+
+/* ===== TEXT SELECTION ===== */
+::selection {
+  background: var(--accent);
+  color: #090b10;
+}
+
+/* ===== GRADIENT TEXT UTILITY ===== */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  box-shadow: 0 0 30px var(--accent-glow);
+  transform: translateY(-4px);
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 15px rgba(0, 212, 170, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0);
+  }
+}
+
+@keyframes scanLine {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(var(--start-angle)) translateX(120px) rotate(calc(-1 * var(--start-angle)));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) + 360deg)) translateX(120px)
+      rotate(calc(-1 * (var(--start-angle) + 360deg)));
+  }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.animate-float { animation: float 8s ease-in-out infinite; }
+.animate-float-reverse { animation: float 10s ease-in-out infinite reverse; }
+.animate-pulse-ring { animation: pulseRing 2s infinite; }
+.animate-scan { animation: scanLine 3s linear infinite; }
+.animate-blink { animation: blink 1s step-end infinite; }
+.animate-spin-slow { animation: spin 20s linear infinite; }
+.animate-spin-slow-reverse { animation: spin 15s linear infinite reverse; }
+
+/* ===== SECTION DEFAULTS ===== */
+section {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 72px 0;
+  }
+}
+
+/* ===== FONT CLASSES ===== */
+.font-display {
+  font-family: var(--font-display, 'Syne', sans-serif);
+}
+
+/* ===== BACKGROUND COLORS via CSS VARS ===== */
+.bg-bg { background-color: var(--bg); }
+.bg-bg-2 { background-color: var(--bg-2); }
+.bg-bg-3 { background-color: var(--bg-3); }
+.text-text { color: var(--text); }
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.text-accent { color: var(--accent); }
+.text-accent2 { color: var(--accent-2); }
+.border-card { border-color: var(--card-border); }
+.bg-card { background: var(--card); }
+.bg-accent-glow { background: var(--accent-glow); }
+.bg-accent2-glow { background: var(--accent-2-glow); }
+
+/* ===== ORBIT ICONS ===== */
+.orbit-1 { --start-angle: 0deg; animation: orbit 10s linear infinite; }
+.orbit-2 { --start-angle: 90deg; animation: orbit 10s linear infinite; }
+.orbit-3 { --start-angle: 180deg; animation: orbit 10s linear infinite; }
+.orbit-4 { --start-angle: 270deg; animation: orbit 10s linear infinite; }
